@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "flights")
-public class Flight extends BaseEntity {
+public class FlightEntity extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "airplane_id")

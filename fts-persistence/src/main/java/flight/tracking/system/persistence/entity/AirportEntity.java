@@ -1,6 +1,5 @@
 package flight.tracking.system.persistence.entity;
 
-import flight.tracking.system.persistence.entity.enums.Continents;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -20,9 +19,6 @@ public class AirportEntity extends BaseEntity {
     @Column(unique = true)
     @Size(min = 3, max = 3)
     private String code;
-
-    @Enumerated(EnumType.STRING)
-    private Continents continent;
 
     private String country;
 
