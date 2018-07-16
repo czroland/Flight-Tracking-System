@@ -1,0 +1,54 @@
+/target
+/bin
+/logs
+.idea/
+*.iml
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+build/
+out/
+
+# IDEA-specific
+*.iml
+/.idea
+
+# Eclipse-specific
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.externalToolBuilders/
+*.launch
+.classpath
+.factorypath
+.buildpath
+.springBeans
+
+# Netbeans-specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Node-specific
+frontend/node_modules/
+package-lock.json
+bower_components
+*.css
