@@ -28,7 +28,7 @@ public class FlightEntity extends BaseEntity {
     @JoinColumn(name = "arrival_airport_id")
     private AirportEntity arrivalAirport;
 
-    private ZonedDateTime departureDate;
+    private LocalDateTime departureDate;
 
-    private ZonedDateTime arrivalDate;
+    private LocalDateTime arrivalDate;
 }

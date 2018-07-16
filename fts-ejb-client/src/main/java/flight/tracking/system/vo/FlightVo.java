@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -20,7 +20,7 @@ public class FlightVo extends BaseVo {
 
     private AirportVo arrivalAirport;
 
-    private ZonedDateTime departureDate;
+    private LocalDateTime departureDate;
 
-    private ZonedDateTime arrivalDate;
+    private LocalDateTime arrivalDate;
 }
