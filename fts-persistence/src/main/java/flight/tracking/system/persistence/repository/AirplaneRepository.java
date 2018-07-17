@@ -12,4 +12,6 @@ public interface AirplaneRepository extends JpaRepository<AirplaneEntity, Long> 
     List<AirplaneEntity> findAll();
 
     AirplaneEntity findById(Long id);
+
+    AirplaneEntity findByCode(String code);
 }

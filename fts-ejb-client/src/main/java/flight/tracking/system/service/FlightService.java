@@ -15,4 +15,6 @@ public interface FlightService {
     FlightVo getFlightByAirplaneId(Long id);
 
     Collection<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to);
+
+    void saveFlight(FlightVo flightVo);
 }
