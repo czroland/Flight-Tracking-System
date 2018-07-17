@@ -16,5 +16,7 @@ public interface FlightService {
 
     Collection<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to);
 
+    Collection<FlightVo> getAllFlights();
+
     void saveFlight(FlightVo flightVo);
 }

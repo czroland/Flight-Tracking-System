@@ -39,6 +39,11 @@ public class FlightServiceImpl extends AbstractEntityVoMapper implements FlightS
     }
 
     @Override
+    public Collection<FlightVo> getAllFlights() {
+        return map(flightRepository.findAll(), FlightVo.class);
+    }
+
+    @Override
     public void saveFlight(FlightVo flightVo) {
         flightRepository.save(map(flightVo, FlightEntity.class));
     }
