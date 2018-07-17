@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <h:outputStylesheet library="css" name="bootstrap-theme.min.css"/>
+    <h:outputStylesheet library="css" name="theme.css"/>
+    <title><ui:insert name="title"/></title>
+</h:head>
+
+<h:body>
+    <f:view>
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-1 col-md-2">
+                    <h:outputLink value="../index.xhtml">
+                        <h:graphicImage library="images" name="logo.png" style="width: 200px" class="img-responsive"/>
+                    </h:outputLink>
+                </div>
+                <div class="col-xs-12 col-sm-11 col-md-4">
+                    <h6 class="welcome-text">Flight Tracking System</h6>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-1">
+                    <h:form id="menuForm">
+                        <p:growl id="messages" autoUpdate="true" showDetail="true"/>
+                    </h:form>
+
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <h:form>
+                <p:breadCrumb>
+
+                </p:breadCrumb>
+            </h:form>
+        </nav>
+
+        <section id="main-content" class="main-content">
+            <ui:insert name="body"/>
+        </section>
+
+        <footer>
+            <span>© 2018 Fts</span>
+        </footer>
+    </f:view>
+</h:body>
+</html>
