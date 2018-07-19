@@ -5,11 +5,128 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="WEB-INF/template/template.xhtml">
     <ui:define name="title">
-        #{msg['home.title']}
+
     </ui:define>
 
     <ui:define name="body">
+        <p:panel id="panel">
+            <p:dataTable id="flights" var="flightVar" value="#{flightBean.flights}"
+                         selection="#{flightBean.selectedFlight}"
+                         style="margin-bottom:0" rowKey="#{flightVar.id}"
+                         rows="20" paginator="true"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="15, 20, 50">
+                <f:facet name="header">
+                    Flights
+                </f:facet>
+                <p:column selectionMode="single" style="width:40px; text-align:center"/>
+                <p:column style="width:30px">
+                    <p:rowToggler/>
+                </p:column>
+                <p:column headerText="Departure Airport" sortBy="#{flightVar.departureAirport.code}">
+                    <h:outputText value="#{flightVar.departureAirport.code}"/>
+                </p:column>
+                <p:column headerText="Departure Date" sortBy="#{flightVar.departureDate}">
+                    <h:outputText value="#{flightVar.departureDate}" converter="localDateTimeConverter"
+                                  pattern="yyyy/MM/dd HH:mm:ss"/>
+                </p:column>
+                <p:column headerText="Arrival Airport" sortBy="#{flightVar.arrivalAirport.code}">
+                    <h:outputText value="#{flightVar.arrivalAirport.code}"/>
+                </p:column>
+                <p:column headerText="Arrival Airport" sortBy="#{flightVar.arrivalDate}">
+                    <h:outputText value="#{flightVar.arrivalDate}" pattern="yyyy/MM/dd HH:mm:ss"
+                                  converter="localDateTimeConverter"/>
+                </p:column>
+                <p:column headerText="Airplane" sortBy="#{flightVar.airplane.code}">
+                    <h:outputText value="#{flightVar.airplane.code}"/>
+                </p:column>
 
+                <p:rowExpansion>
+                    <p:panelGrid columns="2" columnClasses="value,value">
+                        <h:outputText value="Departure Airport Name"/>
+                        <h:outputText value="#{flightVar.departureAirport.name}"/>
+
+                        <h:outputText value="Departure Airport City"/>
+                        <h:outputText value="#{flightVar.departureAirport.city}"/>
+
+                        <h:outputText value="Departure Airport Country"/>
+                        <h:outputText value="#{flightVar.departureAirport.country}"/>
+
+                        <h:outputText value="Arrival Airport Name"/>
+                        <h:outputText value="#{flightVar.arrivalAirport.name}"/>
+
+                        <h:outputText value="Arrival Airport City"/>
+                        <h:outputText value="#{flightVar.arrivalAirport.city}"/>
+
+                        <h:outputText value="Arrival Airport Country"/>
+                        <h:outputText value="#{flightVar.arrivalAirport.country}"/>
+
+                        <h:outputText value="Airline Name"/>
+                        <h:outputText value="#{flightVar.airplane.airline.name}"/>
+
+                        <h:outputText value="Departure Airport City"/>
+                        <h:outputText value="#{flightVar.airplane.seats}"/>
+                    </p:panelGrid>
+                </p:rowExpansion>
+            </p:dataTable>
+            <p:growl id="growl" life="2000" />
+<h:messages></h:messages>
+            <p:commandButton value="New Fligt" onclick="PF('flight-dialog').show()"/>
+            <p:dialog header="New Flight" widgetVar="flight-dialog">
+
+            </p:dialog>
+        </p:panel>
+        <h:form id="flight-creating">
+            <p:panel header="Flight Details">
+                <p:panelGrid columns="2" layout="grid">
+
+                    <h:outputLabel for="airplane" value="Airplane * "/>
+                    <p:selectOneMenu id="airplane" required="true"
+                                     value="#{airplaneBean.airplane.id}"
+                                     converter="#{airplaneVoConverter}">
+                        <f:selectItem itemLabel="Select one!" itemValue=""/>
+                        <f:selectItems value="#{airplaneBean.airplanes}" var="airplane"
+                                       itemLabel="#{airplane.code}" itemValue="#{airplane.id}"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel for="departure-airport" value="Departure airport * "/>
+                    <p:selectOneMenu id="departure-airport" required="true"
+                                     value="#{airportBean.departureAirport.id}"
+                                     converter="#{airportVoConverter}">
+                        <f:selectItem itemLabel="Select one!" itemValue=""/>
+                        <f:selectItems value="#{airportBean.airports}" var="airport"
+                                       itemLabel="#{airport.code}" itemValue="#{airport.id}"/>
+                    </p:selectOneMenu>
+
+                     <p:outputLabel for="ddatetime" value="Departure Datetime:"/>
+                    <p:calendar id="ddatetime" value="#{flightBean.startDate}"
+                                rendered="true"
+                                pattern="yyyy/MM/dd HH:mm"
+                               converter="#{localDateTimeConverter}">
+                    </p:calendar>
+
+                    <h:outputLabel for="arrival-airport" value="Arrival airport * "/>
+                    <p:selectOneMenu id="arrival-airport" required="true"
+                                     value="#{airportBean.arrivalAirport.id}"
+                                     converter="#{airportVoConverter}">
+                        <f:selectItem itemLabel="Select one!" itemValue=""/>
+                        <f:selectItems value="#{airportBean.airports}" var="airport"
+                                       itemLabel="#{airport.code}" itemValue="#{airport.id}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="adatetime" value="Arrival Datetime:"/>
+                    <p:calendar id="adatetime" value="#{flightBean.endDate}" rendered="true"
+                                pattern="yyyy-MM-dd HH:mm"
+                                converter="#{localDateTimeConverter}">
+                    </p:calendar>
+                </p:panelGrid>
+
+            </p:panel>
+            <p:commandButton type="Submit" ajax="false" value="Save"
+                             actionListener="#{flightManagement.saveFlight}"
+            />
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>

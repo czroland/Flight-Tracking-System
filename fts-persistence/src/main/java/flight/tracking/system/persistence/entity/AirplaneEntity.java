@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @Entity
 @Table(name = "airplanes")
 public class AirplaneEntity extends BaseEntity {

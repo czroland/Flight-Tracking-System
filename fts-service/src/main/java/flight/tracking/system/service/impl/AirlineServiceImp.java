@@ -13,6 +13,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.interceptor.Interceptors;
 import java.util.Collection;
+import java.util.List;
 
 @Stateless(mappedName = "AirlineService")
 @Local(AirlineService.class)
@@ -24,7 +25,7 @@ public class AirlineServiceImp extends AbstractEntityVoMapper implements Airline
     private AirlineRepository airlineRepository;
 
     @Override
-    public Collection<AirlineVo> getAllAirlines() {
+    public List<AirlineVo> getAllAirlines() {
         return map(airlineRepository.findAll(), AirlineVo.class);
     }
 }

@@ -7,10 +7,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 @AllArgsConstructor
 public class FlightVo extends BaseVo {
 
@@ -20,7 +19,12 @@ public class FlightVo extends BaseVo {
 
     private AirportVo arrivalAirport;
 
-    private LocalDateTime departureDate;
+    private LocalDateTime departureDate;;
 
-    private LocalDateTime arrivalDate;
+    private LocalDateTime arrivalDate;;
+
+    public FlightVo(){
+        /*departureDate= LocalDateTime.now();
+        arrivalDate = LocalDateTime.now();*/
+    }
 }

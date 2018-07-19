@@ -10,8 +10,6 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @Entity
 @Table(name = "flights")
 public class FlightEntity extends BaseEntity {

@@ -8,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @Entity
 @Table(name = "airports")
 public class AirportEntity extends BaseEntity {

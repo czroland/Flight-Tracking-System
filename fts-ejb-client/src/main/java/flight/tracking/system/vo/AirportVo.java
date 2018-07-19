@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class AirportVo extends BaseVo{
+public class AirportVo extends BaseVo {
 
     private String name;
 

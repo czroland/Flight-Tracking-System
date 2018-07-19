@@ -15,6 +15,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.interceptor.Interceptors;
 import java.util.Collection;
+import java.util.List;
 
 @Stateless(mappedName = "AirportService")
 @Local(AirportService.class)
@@ -36,12 +37,17 @@ public class AirportServiceImpl extends AbstractEntityVoMapper implements Airpor
     }
 
     @Override
-    public Collection<AirportVo> getAirportsByCity(String City) {
+    public List<AirportVo> getAirportsByCity(String City) {
         return null;
     }
 
     @Override
-    public Collection<AirportVo> getAirportsByCountry(String City) {
+    public List<AirportVo> getAirportsByCountry(String City) {
         return null;
+    }
+
+    @Override
+    public List<AirportVo> getAllAirports() {
+        return map(airportRepository.findAll(), AirportVo.class);
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
+@NoArgsConstructor
 public class AirplaneVo extends BaseVo {
 
     private AirlineVo airline;

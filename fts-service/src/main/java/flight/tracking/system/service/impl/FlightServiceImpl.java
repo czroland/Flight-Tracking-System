@@ -5,22 +5,21 @@ import flight.tracking.system.persistence.repository.FlightRepository;
 import flight.tracking.system.service.FlightService;
 import flight.tracking.system.service.mapper.AbstractEntityVoMapper;
 import flight.tracking.system.vo.FlightVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
-import javax.ejb.Local;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
+import javax.ejb.*;
 import javax.interceptor.Interceptors;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
-@Stateless(mappedName = "FlightService")
-@Local(FlightService.class)
+@Stateless(mappedName = "FlightService", name = "FlightService")
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class FlightServiceImpl extends AbstractEntityVoMapper implements FlightService {
 
+    @Autowired
     private FlightRepository flightRepository;
 
     @Override
@@ -34,12 +33,12 @@ public class FlightServiceImpl extends AbstractEntityVoMapper implements FlightS
     }
 
     @Override
-    public Collection<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to) {
-        return map(flightRepository.findByDepartureDateBetweenAndOrderByDepartureDateAtDesc(from, to), FlightVo.class);
+    public List<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to) {
+        return map(flightRepository.findAllByDepartureDateBetween(from, to), FlightVo.class);
     }
 
     @Override
-    public Collection<FlightVo> getAllFlights() {
+    public List<FlightVo> getAllFlights() {
         return map(flightRepository.findAll(), FlightVo.class);
     }
 

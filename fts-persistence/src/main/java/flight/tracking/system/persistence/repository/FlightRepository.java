@@ -16,5 +16,5 @@ public interface FlightRepository extends JpaRepository<FlightEntity, Long> {
 
     FlightEntity findByAirplaneId(Long id);
 
-    List<FlightEntity> findByDepartureDateBetweenAndOrderByDepartureDateAtDesc(LocalDateTime from, LocalDateTime to);
+    List<FlightEntity> findAllByDepartureDateBetween(LocalDateTime from, LocalDateTime to);
 }

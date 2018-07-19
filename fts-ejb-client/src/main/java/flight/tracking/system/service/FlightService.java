@@ -6,6 +6,7 @@ import flight.tracking.system.vo.FlightVo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 public interface FlightService {
@@ -14,9 +15,9 @@ public interface FlightService {
 
     FlightVo getFlightByAirplaneId(Long id);
 
-    Collection<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to);
+    List<FlightVo> getFlightsByDepartureDateBetween(LocalDateTime from, LocalDateTime to);
 
-    Collection<FlightVo> getAllFlights();
+    List<FlightVo> getAllFlights();
 
     void saveFlight(FlightVo flightVo);
 }

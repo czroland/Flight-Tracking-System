@@ -4,6 +4,7 @@ package flight.tracking.system.service;
 import flight.tracking.system.vo.AirplaneVo;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface AirplaneService {
 
@@ -11,5 +12,5 @@ public interface AirplaneService {
 
     AirplaneVo getAirplaneByCode(String code);
 
-    Collection<AirplaneVo> getAllAirplanes(String City);
+    List<AirplaneVo> getAllAirplanes();
 }

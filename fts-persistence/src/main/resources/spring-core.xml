@@ -27,7 +27,7 @@
     <!-- Use declarative transactions on the services -->
     <tx:annotation-driven/>
 
-    <jpa:repositories base-package="flight.tracking.system.persistence"/>
+    <jpa:repositories base-package="flight.tracking.system.persistence.repository"/>
 
     <bean class="org.springframework.data.jpa.repository.support.DefaultJpaContext">
         <constructor-arg>
