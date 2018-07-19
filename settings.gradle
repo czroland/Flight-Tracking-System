@@ -1,0 +1,11 @@
+rootProject.name = 'fts'
+
+include 'fts-ear'
+include 'fts-persistence'
+include 'fts-ejb-client'
+include 'fts-service'
+include 'fts-web'
+
+
+
+
